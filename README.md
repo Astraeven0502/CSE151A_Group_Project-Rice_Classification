@@ -23,16 +23,23 @@ We performed the following data exploration steps:
      import matplotlib.pyplot as plt
 
      def extract_features(image_path):
+         # Read the image
          image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+         # Check if the image is loaded successfully
          if image is None:
              print(f"Failed to load image: {image_path}")
              return []
 
+         # Binary thresholding
          _, thresh = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+         # Find contours
          contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+         # Initialize feature list
          features_list = []
+
          for contour in contours:
+             # Calculate features
              area = cv2.contourArea(contour)
              perimeter = cv2.arcLength(contour, True)
              x, y, w, h = cv2.boundingRect(contour)
@@ -45,24 +52,28 @@ We performed the following data exploration steps:
                      MA, ma = ma, MA
                  if MA > 0 and ma > 0:
                      eccentricity = np.sqrt(1 - (ma/MA)**2)
-                 else:
-                     print(f"Invalid values for MA ({MA}) or ma ({ma}) in image {image_path}")
              hull = cv2.convexHull(contour)
              convex_area = cv2.contourArea(hull)
              extent = area / (w * h) if w * h > 0 else 0
 
+             # Append features to list
              features = [area, perimeter, major_axis_length, minor_axis_length, eccentricity, convex_area, extent]
              features_list.append(features)
 
          return features_list
 
+     # Define the main directory path
      main_directory_path = '/content/rice-image-dataset/Rice_Image_Dataset'
+
+     # Get all class subdirectories
      classes = os.listdir(main_directory_path)
      all_features = []
 
+     # Iterate through each class subdirectory
      for class_name in classes:
          class_path = os.path.join(main_directory_path, class_name)
          if os.path.isdir(class_path):
+             # Get all image files in the class directory
              for filename in os.listdir(class_path):
                  if filename.endswith(".png") or filename.endswith(".jpg"):
                      image_path = os.path.join(class_path, filename)
@@ -70,12 +81,14 @@ We performed the following data exploration steps:
                      if features:
                          all_features.extend(features)
 
+     # Initialize DataFrame
      columns = ["Area", "Perimeter", "Major_Axis_Length", "Minor_Axis_Length", "Eccentricity", "Convex_Area", "Extent"]
      df = pd.DataFrame(all_features, columns=columns)
 
      # Drop rows with NaN values
      df = df.dropna()
 
+     # Add additional columns
      df['Variable Name'] = ["Feature"] * len(df)
      df['Role'] = ["Feature"] * len(df)
      df['Type'] = ["Continuous"] * len(df)
@@ -83,15 +96,20 @@ We performed the following data exploration steps:
      df['Units'] = [""] * len(df)
      df['Missing Values'] = ["no"] * len(df)
 
+     # Rearrange column order
      df = df[["Variable Name", "Role", "Type", "Description", "Units", "Missing Values", "Area", "Perimeter", "Major_Axis_Length", "Minor_Axis_Length", "Eccentricity", "Convex_Area", "Extent"]]
 
+     # Display the DataFrame
      print(df)
+
+     # Count the number of classes and images
      num_classes = len(classes)
-     num_images = len(df)
+     num_images = len(all_features)
 
      print(f'Number of classes: {num_classes}')
      print(f'Number of images: {num_images}')
 
+     # Check if image sizes are uniform
      unique_sizes = set(df[["Major_Axis_Length", "Minor_Axis_Length"]].apply(tuple, axis=1))
      print(f'Unique image sizes: {unique_sizes}')
      ```
@@ -104,21 +122,26 @@ We performed the following data exploration steps:
      import cv2
      import matplotlib.pyplot as plt
 
+     # Define the main directory path
      main_directory_path = '/content/rice-image-dataset/Rice_Image_Dataset'
+
+     # Get all class subdirectories
      classes = os.listdir(main_directory_path)
 
-     fig, axes = plt.subplots(1, len(classes), figsize=(15, 5))
+     # Plot example images from each class
+     fig, axs = plt.subplots(1, len(classes), figsize=(15, 5))
 
      for i, class_name in enumerate(classes):
          class_path = os.path.join(main_directory_path, class_name)
          if os.path.isdir(class_path):
-             example_image_path = os.path.join(class_path, os.listdir(class_path)[0])
-             img = cv2.imread(example_image_path)
-             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-             
-             axes[i].imshow(img)
-             axes[i].set_title(class_name)
-             axes[i].axis('off')
+             image_path = os.path.join(class_path, os.listdir(class_path)[0])
+             image = cv2.imread(image_path)
+             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+             # Plot the image
+             axs[i].imshow(image, cmap='gray')
+             axs[i].set_title(class_name)
+             axs[i].axis('off')
 
      plt.show()
      ```
