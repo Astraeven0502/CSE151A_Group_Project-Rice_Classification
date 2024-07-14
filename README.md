@@ -13,7 +13,7 @@
 We performed the following data exploration steps:
 
 1. **Image Data**:
-   - Described the number of classes, number of images, plotted example classes of the image, size of images, and checked if sizes are uniform.
+   - Described the number of classes, number of images, size of images, and checked if sizes are uniform.
    - Example code:
      ```python
      import os
