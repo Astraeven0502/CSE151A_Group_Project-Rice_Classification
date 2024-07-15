@@ -154,7 +154,8 @@ We performed the following data exploration steps:
 ![heatmap](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/heatmap.png)
 
 5. **Plot the Pairplot**
-![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png)
+![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png) \\
+
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
 
 ## Preprocess the data
