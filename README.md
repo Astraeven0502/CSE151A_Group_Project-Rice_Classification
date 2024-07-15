@@ -7,6 +7,10 @@
 * Jiawei Huang
 * Zhenhan Hu
 * Shiwei Yang
+
+# Milestone 2: Data Exploration & Initial Preprocessing - Colab Notebooks
+[Here is our Google Colab Notebooks](https://colab.research.google.com/drive/1bM3yfj60lDQ3N6NRP37qrv_-08Auf9Cd?usp=sharing)
+
 # Data exploration
 
 We have 5 rice varieties in our image data, Arborio, Basmati, Ipsala, Jasmine, and Karacadag. The total number of the images is 75,000. Each of the varieties has 15,000 images from different angles and sizes. The image sizes are all 250x250 pixels, but the sizes of each rice are different. Every image is in a dark background with exactly one rice in the middle of the image. We will look at this image and use OpenCV to get the feature from those image datasets. The feature we will extract are:
@@ -42,7 +46,7 @@ import matplotlib.pyplot as plt
 
 We performed the following data exploration steps:
 
-1. **Extract Features From Image Data**:
+1. **Extract Features From Image Data Using extract_features() Function**:
    - Example code:
     ```python
     # Define the main directory path
@@ -87,19 +91,20 @@ We performed the following data exploration steps:
     # Rearrange column order
     df = df[["Area", "Perimeter", "Major_Axis_Length", "Minor_Axis_Length", "Eccentricity", "Convex_Area", "Extent"]]
 
-    # Display the DataFrame
-    print(df)
-
     # Count the number of classes and images
     num_classes = len(classes)
     num_images = len(all_features)
 
     print(f'Number of classes: {num_classes}')
     print(f'Number of images: {num_images}')
-
     ```
 
-3. **Plot Example Classes of the Image for each varieties**:
+3. **Display the DataFrame for the features**
+   ```python
+   print(df)
+   ```
+
+4. **Plot Example Classes of the Image for each varieties**:
    - Example code:
 
     ```python
@@ -122,17 +127,15 @@ We performed the following data exploration steps:
 
     plt.show()
     ```
+    ![class_rice](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/class_rice.png)
 
-
-![class_rice](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/class_rice.png)
-
-3. **Print the data description and check the number of missing values in each column**:
+5. **Print the data description and check the number of missing values in each column**:
 ![data_description](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/Data_description.png)
 
-4. **Plot the correlation matrix heatmap**
+6. **Plot the correlation matrix heatmap**
 ![heatmap](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/heatmap.png)
 
-5. **Plot the Pairplot**
+7. **Plot the Pairplot**
 ![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png) \\
 
 
