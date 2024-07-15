@@ -2,7 +2,7 @@
 
 #### Team member:
 * Po-Yu Lai
-* chaowen cao
+* Chaowen cao
 * Xinheng Wang
 * Jiawei Huang
 * Zhenhan Hu
