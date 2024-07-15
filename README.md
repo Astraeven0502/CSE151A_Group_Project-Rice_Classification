@@ -2,7 +2,7 @@
 
 #### Team member:
 * Po-Yu Lai
-* chaowen cao
+* Chaowen cao
 * Xinheng Wang
 * Jiawei Huang
 * Zhenhan Hu
@@ -101,6 +101,7 @@ We performed the following data exploration steps:
 
 3. **Plot Example Classes of the Image for each varieties**:
    - Example code:
+
     ```python
     # Plot three images for each variety
     fig, axs = plt.subplots(3, len(classes), figsize=(15, 10))
@@ -122,4 +123,27 @@ We performed the following data exploration steps:
     plt.show()
     ```
 
+
+![class_rice](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/class_rice.png)
+
+3. **Print the data description and check the number of missing values in each column**:
+![data_description](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/Data_description.png)
+
+4. **Plot the correlation matrix heatmap**
+![heatmap](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/heatmap.png)
+
+5. **Plot the Pairplot**
+![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png) \\
+
+
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
+
+## Preprocess the data
+* Load the image from the dataset to check the quality of the images.
+* Check the size of the images and unify them to the same size.
+* Convert labels to categories, `Arborio （1）-> Arborio`.
+* Convert images to matrices.
+* Compute feature matrix from image matrices.
+* Manually add the categories to the feature matrix, like rice classification.
+* Standardize the image matrix for later model building.
+* Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
