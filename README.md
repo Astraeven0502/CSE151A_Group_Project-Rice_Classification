@@ -146,8 +146,11 @@ We performed the following data exploration steps:
      plt.show()
      ```
 
-3. **Check the number of missing values in each column and plot the correlation matrix heatmap**:
+3. **Print the data description and check the number of missing values in each column**:
+![data_description](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/Data_description.png)
 
+4. **Plot the correlation matrix heatmap**
+   
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
 
 ## Preprocess the data
