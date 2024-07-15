@@ -164,6 +164,6 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 * Convert labels to categories, `Arborio （1）-> Arborio`.
 * Convert images to matrices.
 * Compute feature matrix from image matrices.
-* Manually add the categories to the feature matrix.
+* Manually add the categories to the feature matrix, like rice classification.
 * Standardize the image matrix for later model building.
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
