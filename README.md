@@ -145,12 +145,16 @@ We performed the following data exploration steps:
 
      plt.show()
      ```
+![class_rice](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/class_rice.png)
 
 3. **Print the data description and check the number of missing values in each column**:
 ![data_description](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/Data_description.png)
 
 4. **Plot the correlation matrix heatmap**
-   
+![heatmap](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/heatmap.png)
+
+5. **Plot the Pairplot**
+![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png)
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
 
 ## Preprocess the data
