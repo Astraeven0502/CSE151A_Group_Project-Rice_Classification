@@ -127,7 +127,7 @@ We performed the following data exploration steps:
 
     plt.show()
     ```
-    ![class_rice](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/class_rice.png)
+    ![class_rice](https://github.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/blob/main/data_picture/class_rice_display_three.png)
 
 5. **Print the data description and check the number of missing values in each column**:
 ![data_description](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/Data_description.png)
