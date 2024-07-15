@@ -159,6 +159,11 @@ We performed the following data exploration steps:
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
 
 ## Preprocess the data
-* Since there is no column for rice classification in the original feature matrix, we can add the classification name of rice to the feature matrix.
-* We can try to standardize the data to improve model performance.
+* Load the image from the dataset to check the quality of the images.
+* Check the size of the images and unify them to the same size.
+* Convert labels to categories, `Arborio （1）-> Arborio`.
+* Convert images to matrices.
+* Compute feature matrix from image matrices.
+* Manually add the categories to the feature matrix.
+* Standardize the image matrix for later model building.
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
