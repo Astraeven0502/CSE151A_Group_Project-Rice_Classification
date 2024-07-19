@@ -150,3 +150,6 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 * Manually add the categories to the feature matrix, like rice classification.
 * Standardize the image matrix for later model building.
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
+
+# Milestone 3: Pre-Processing
+In the preprocess function, we normalized and standardized three features (`Eccentricity`,`Extent`, and `Major_Axis_Length`) since they correlate more with `class`.
