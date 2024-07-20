@@ -136,7 +136,7 @@ We performed the following data exploration steps:
 ![heatmap](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/heatmap.png)
 
 7. **Plot the Pairplot**
-![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pairplot.png)
+![pairplot](https://raw.githubusercontent.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/main/data_picture/pair_poly_corrected.png)
 
 
 All exploration steps are implemented in the Jupyter notebook and the code is available in the repository.
@@ -152,4 +152,4 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
 
 # Milestone 3: Pre-Processing
-In the preprocess function, we normalized and standardized three features (`Eccentricity`,`Extent`, and `Major_Axis_Length`) since they correlate more with `class`.
+Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Eccentricity`, `Extent`, and `Major_Axis_Length`) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`. We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
