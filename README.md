@@ -153,3 +153,14 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 
 # Milestone 3: Pre-Processing
 Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Eccentricity`, `Extent`, and `Major_Axis_Length`) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`. We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
+
+## Methods
+We used logistic regression models to classify the types of rice.
+
+### Feature Pairing and Model Training
+- We paired different types of rice to train different models. For example, Type 1 vs. Type 2, Type 1 vs. Type 3, and so on.
+- Each pair was used to train a separate instance of the logistic regression model.
+
+### Scoring Mechanism
+- After training, each model's predictions on the test set were combined into a single matrix.
+- The final classification was based on a score mechanism. For each test sample, the most frequent prediction obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
