@@ -154,7 +154,7 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 # Milestone 3: Pre-Processing
 ### Preprocess Data
 * **Choose Key Features**
-  * Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Eccentricity`(-0.89), `Extent`(0.6), and `Major_Axis_Length`(-0.41)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
+  * Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
 ![heatmap2](./data_picture/heatmap2.png)
 * **Label Encoding**
   *  We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
@@ -178,7 +178,7 @@ Each row is the prediction of each model for the test set, and each column is th
 * Train_Accuracy:  
 ![train_accuracy](./data_picture/train_accuracy.png)
 * Test_Accuracy:  
-![test_accuracy](./data_picture/accuracy.png)
+![test_accuracy](./data_picture/test_accuracy.png)
 * Classification Report:  
 ![classification_report](./data_picture/classification_report.png)
 
