@@ -149,9 +149,11 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 * Compute feature matrix from image matrices.
 * Manually add the categories to the feature matrix, like rice classification.
 * Standardize the image matrix for later model building.
-* Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
+* Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, and duplicate records in the data to reduce redundancy.
 
 # Milestone 3: Pre-Processing
+[Here is our Google Colab Notebooks for Milestone 3](https://colab.research.google.com/drive/1PEwfDU62j56QCuqCfRH3QHhE-IZpv4LM?usp=sharing)
+
 ### Preprocess Data
 * **Choose Key Features**
   * Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
@@ -173,7 +175,7 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
   * After training, each model's predictions on the test set were combined into a single matrix.  
 ![output_matrix](./data_picture/out_matrix.png)  
 Each row is the prediction of each model for the test set, and each column is the prediction result of different models for the same sample.
-  * The final classification was based on a score mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
+  * The final classification was based on a scoring mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
 * **Evaluate**
 * Train_Accuracy:  
 ![train_accuracy](./data_picture/train_accuracy.png)
