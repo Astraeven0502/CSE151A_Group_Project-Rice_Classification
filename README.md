@@ -167,19 +167,19 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
     We used logistic regression models to classify the types of rice.
 * **Feature Pairing and Model Training**
   * We paired different types of rice to train different models. For example, Type 1 vs. Type 2, Type 1 vs. Type 3, and so on.
-  * Each pair was used to train a separate instance of the logistic regression model. In the end, we have a total of 10 models, each trained on two of the types of rices. The following are 10 Logistic Regression models and their corresponding **log losses**:
+  * Each pair was used to train a separate instance of the logistic regression model. In the end, we have a total of 10 models, each trained on two of the types of rices. The following are 10 Logistic Regression models and their corresponding **log losses**:  
 ![logistic_regression](./data_picture/logistic_regression.png)
 * **Scoring Mechanism**
-  * After training, each model's predictions on the test set were combined into a single matrix.
+  * After training, each model's predictions on the test set were combined into a single matrix.  
 ![output_matrix](./data_picture/out_matrix.png)
 Each row is the prediction of each model for the test set, and each column is the prediction result of different models for the same sample.
   * The final classification was based on a score mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
 * **Evaluate**
-* Train_Accuracy:
+* Train_Accuracy:  
 ![train_accuracy](./data_picture/train_accuracy.png)
-* Test_Accuracy: 
+* Test_Accuracy:  
 ![test_accuracy](./data_picture/accuracy.png)
-* Classification Report: 
+* Classification Report:  
 ![classification_report](./data_picture/classification_report.png)
 
 ### Question
