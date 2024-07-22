@@ -9,10 +9,10 @@
 * Shiwei Yang
 
 ### Table of Contents
-* [Milestone 2: Data Exploration & Initial Preprocessing](https://github.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/tree/main#milestone-2-data-exploration--initial-preprocessing---colab-notebooks)
-* [Milestone 3: Pre-Processing](https://github.com/Astraeven0502/CSE151A_Group_Project-Rice_Classification/tree/main#milestone-3-pre-processing)
+* [Milestone 2: Data Exploration & Initial Preprocessing](#milestone-2-data-exploration--initial-preprocessing)
+* [Milestone 3: Pre-Processing](#milestone-3-pre-processing)
 
-# Milestone 2: Data Exploration & Initial Preprocessing - Colab Notebooks
+# Milestone 2: Data Exploration & Initial Preprocessing
 [Here is our Google Colab Notebooks for Milestone 2](https://colab.research.google.com/drive/1bM3yfj60lDQ3N6NRP37qrv_-08Auf9Cd?usp=sharing)
 
 # Data exploration
