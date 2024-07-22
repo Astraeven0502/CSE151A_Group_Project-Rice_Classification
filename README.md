@@ -152,15 +152,43 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, duplicate records in the data to reduce redundancy.
 
 # Milestone 3: Pre-Processing
-Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Eccentricity`, `Extent`, and `Major_Axis_Length`) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`. We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
+### Preprocess Data
+* **Choose Key Features**
+  * Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Eccentricity`(-0.89), `Extent`(0.6), and `Major_Axis_Length`(-0.41)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
+![heatmap2](./data_picture/heatmap2.png)
+* **Label Encoding**
+  *  We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
+* **Normalize and Standardize**
+  * Minmax Normalization makes all eigenvalues ​​between [0, 1], eliminating the impact of different eigenvalue magnitudes. Standardization converts data into a standard normal distribution with a mean of 0 and a standard deviation of 1, which improves the efficiency of subsequent operations on the data.
+![df_pre](./data_picture/df_pre.png)
 
-### Methods
-We used logistic regression models to classify the types of rice.
+### First Training Model
+* **Logistic Regression model**
+    We used logistic regression models to classify the types of rice.
+* **Feature Pairing and Model Training**
+  * We paired different types of rice to train different models. For example, Type 1 vs. Type 2, Type 1 vs. Type 3, and so on.
+  * Each pair was used to train a separate instance of the logistic regression model. In the end, we have a total of 10 models, each trained on two of the types of rices. The following are 10 Logistic Regression models and their corresponding **log losses**:
+![logistic_regression](./data_picture/logistic_regression.png)
+* **Scoring Mechanism**
+  * After training, each model's predictions on the test set were combined into a single matrix.
+![output_matrix](./data_picture/out_matrix.png)
+Each row is the prediction of each model for the test set, and each column is the prediction result of different models for the same sample.
+  * The final classification was based on a score mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
+* **Evaluate**
+* Train_Accuracy:
+![train_accuracy](./data_picture/train_accuracy.png)
+* Test_Accuracy: 
+![test_accuracy](./data_picture/accuracy.png)
+* Classification Report: 
+![classification_report](./data_picture/classification_report.png)
 
-### Feature Pairing and Model Training
-- We paired different types of rice to train different models. For example, Type 1 vs. Type 2, Type 1 vs. Type 3, and so on.
-- Each pair was used to train a separate instance of the logistic regression model.
+### Question
+* **Where does your model fit in the fitting graph?**
+  * We think that our model is in a good fit. The training accuracy and test accuracy are both high and close. And according to the Classification report, for all rice classifications, the model's precision, recall and f1-score are at high values
 
-### Scoring Mechanism
-- After training, each model's predictions on the test set were combined into a single matrix.
-- The final classification was based on a score mechanism. For each test sample, the most frequent prediction obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
+* **What are the next models you are thinking of and why?**
+  * Since our goal is to distinguish 5 types of rice, which is a multi-classification problem, using **Neural Networks** can meet the needs of having multiple outputs. A neural network can be implemented by using a sigmoid activation function in the output layer, allowing each output node to predict the class independently.
+
+### Conclusion section
+* **What is the conclusion of your 1st model?**
+* **What can be done to possibly improve it?**
