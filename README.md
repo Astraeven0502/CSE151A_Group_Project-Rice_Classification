@@ -171,7 +171,7 @@ All exploration steps are implemented in the Jupyter notebook and the code is av
 ![logistic_regression](./data_picture/logistic_regression.png)
 * **Scoring Mechanism**
   * After training, each model's predictions on the test set were combined into a single matrix.  
-![output_matrix](./data_picture/out_matrix.png)
+![output_matrix](./data_picture/out_matrix.png)  
 Each row is the prediction of each model for the test set, and each column is the prediction result of different models for the same sample.
   * The final classification was based on a score mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
 * **Evaluate**
