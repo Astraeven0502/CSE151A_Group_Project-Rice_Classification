@@ -9,7 +9,7 @@
 * Shiwei Yang
 
 # Milestone 2: Data Exploration & Initial Preprocessing - Colab Notebooks
-[Here is our Google Colab Notebooks](https://colab.research.google.com/drive/1bM3yfj60lDQ3N6NRP37qrv_-08Auf9Cd?usp=sharing)
+[Here is our Google Colab Notebooks for Milestone 2](https://colab.research.google.com/drive/1bM3yfj60lDQ3N6NRP37qrv_-08Auf9Cd?usp=sharing)
 
 # Data exploration
 
