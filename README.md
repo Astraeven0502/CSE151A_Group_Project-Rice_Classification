@@ -202,4 +202,4 @@ Each row is the prediction of each model for the test set, and each column is th
    * First of all, in terms of the use of the model, it seems to be a better decision to use a neural network rather than a logistic regression model, because this is a multi-classification problem, and neural networks have better performance for predicting tasks belonging to multiple categories. Then, for the final statistical method of the test results using the logistic regression model, we adopted the mode method, which may produce multiple different modes and lead to confusion in the test results. Perhaps it would be a better idea to use the sum or maximum probability of each model's probability for the test result.
 
 # Milestone 4: Final Submission
-![Final_Report](./Final_Report.md)
+[Final_Report](./Final_Report.md)
