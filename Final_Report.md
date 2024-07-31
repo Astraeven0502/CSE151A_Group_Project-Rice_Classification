@@ -70,6 +70,8 @@ Each row is the prediction of each model for the test set, and each column is th
    * First of all, in terms of the use of the model, it seems to be a better decision to use a neural network rather than a logistic regression model, because this is a multi-classification problem, and neural networks have better performance for predicting tasks belonging to multiple categories. Then, for the final statistical method of the test results using the logistic regression model, we adopted the mode method, which may produce multiple different modes and lead to confusion in the test results. Perhaps it would be a better idea to use the sum or maximum probability of each model's probability for the test result.
 
 ## Result
+In order to classify the class of rice, two algorithms are implemented. First one is a combination of 10 logistic regression, yielding a train accuracy of `0.9645` and test accuracy of `0.9660`. Second one is a neural network, yielding a train accuracy of `0.9620` and test accuracy of `0.9577 `. The best parameter for the neural network is 
+`{'num_layers': 8, 'units_layer_0': 86, 'activation_layer_0': 'softmax', 'units_layer_1': 127, 'activation_layer_1': 'relu', 'units_layer_2': 4, 'activation_layer_2': 'relu', 'units_layer_3': 4, 'activation_layer_3': 'softmax', 'dropout': True, 'output_activation': 'softmax', 'lr': 0.0004738715531002648, 'optimizer': 'Adam', 'units_layer_4': 45, 'activation_layer_4': 'sigmoid', 'units_layer_5': 86, 'activation_layer_5': 'relu', 'units_layer_6': 86, 'activation_layer_6': 'softmax', 'units_layer_7': 45, 'activation_layer_7': 'relu', 'units_layer_8': 86, 'activation_layer_8': 'relu', 'units_layer_9': 86, 'activation_layer_9': 'relu'}`.
 
 ## Discussion
 
