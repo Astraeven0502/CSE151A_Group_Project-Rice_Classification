@@ -67,6 +67,51 @@ Each row is the prediction of each model for the test set, and each column is th
 
 ## Discussion
 
+In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
+
+### Data Preprocessing
+
+We started with a dataset that consists of 75,000 images of rice grains—15,000 of each type of rice, each being an image of size 250 by 250 pixels containing one rice grain in the middle of the picture, and the rest of the image with a black background. Preprocessing the data involves the extraction of useful features from the images.
+
+### Feature Extraction
+
+Our initial approach was to use OpenCV to extract geometrical features from the rice grain. We selected this approach because of its simplicity and our hypothesis that different rice varieties are likely to have distinct characteristic shapes. We binarized the image and found the contours in the image to compute different geometrical features for each of the contours.
+
+### Standardizing Features
+
+Standardization ensures all features have the same scale, which helps the model train well. We standardized our features using `StandardScaler`.
+
+### Model Selection and Training
+
+Initially, we selected logistic regression models and trained binary classifiers for pairs of the selected classes, calculating the corresponding log loss values for each. Finally, by using these log loss values, a voting classifier was built. This served as our baseline before moving to more complex models. We were pleasantly surprised by how well logistic regression performed on our dataset. It might indicate strong discriminativity among features but also raises concerns about high complexity in the dataset. Typically, if a logistic regression model works well for a task, it suggests that the differences are more subtle and non-linear.
+
+
+
+### Deep Learning Model and Hyperparameter Tuning
+
+Given the promising results from logistic regression, we moved on to explore deep learning models. We used convolutional neural networks (CNNs) due to their effectiveness in image classification tasks. Our CNN architecture was designed to capture the intricate patterns and textures in rice grains that logistic regression might miss.
+
+To further improve performance, we used Keras Tuner for hyperparameter search. We hypothesized the presence of complex nonlinear relationships in our data, beyond what simpler models could capture. Indeed, in support of this hypothesis, the deep learning model showed improved performance at the expense of a decrease in interpretability.
+
+### Results and Discussion
+
+Both logistic regression and deep learning models were trained, and both showed high accuracy on the test set. However, this result is not without questions about its reliability. Further details on the results are discussed below:
+
+### Reliability of Results
+
+We achieved about 97% accuracy on the test set; therefore, it remains highly predictive. However, the dataset is generated artificially, and images are on black backgrounds, which may not be the case in reality. So, the model's performance might degrade while working in real applications.
+
+### Limitations and Improvements
+
+The primary limitation of our model is overfitting. We can improve this by increasing the size of the data, as well as using data augmentation techniques and regularization methods. Other approaches to try for further performance improvement may include trying out additional models and complex network architectures.
+
+### Future Work
+
+In the future, transfer learning can be tried using pre-trained convolutional neural networks (CNNs), such as ResNet and VGG, for feature extraction and classification. Further methods of hyperparameter tuning—such as Bayesian optimization—might be considered in an attempt to find better hyperparameter configurations.
+
+Overall, it has been a practical learning process in building a machine and deep learning project from scratch: data preprocessing, feature extraction, model selection and training, and hyperparameter tuning. The results are not perfect; however, this process gave us insight into machine learning and deep learning, enabling us to identify problems and solve them within a project.
+
+
 ## Conclusion
 
 ## Statement of Collaboration
