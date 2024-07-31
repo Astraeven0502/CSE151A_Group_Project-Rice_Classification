@@ -8,11 +8,15 @@
 * [Conclusion](#conclusion)
 * [Statement of Collaboration](#statement-of-collaboration)
 
-## Introduction
+## Introduction  
+![rice_type](./data_picture/rice_type.png)
 Rice, an agriculturally important food for many countries and regions, has a history of cultivation for thousands of years. Over time, new rice varieties have been introduced to enhance its traits such as disease resistance and nutritional content. However, traditional classification among different types of rice is done by manual visual inspection which is often challenging, slow, and results in higher error due to their similarity in size, shape, and color. Thus, developing efficient and accurate classification methods is crucial for helping farmers and producers ensure consistent quality control and segregating different rice varieties for specialized markets.
 
-In this project, we focus on classifying five types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag. We analyze some of their key features, including Area, Perimeter, Major_Axis_Length, Minor_Axis_Length, Eccentricity, Convex_Area, and Extent, extracted from images. Our dataset comprises 75,000 images, with 15,000 images per rice variety. The image sizes are all 250x250 pixels on a dark background with exactly one rice in the middle of the image.
+In this project, we focus on classifying five types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag.  
+![rice_introduction](./data_picture/rice_introduction.png)
+We analyze some of their key features, including Area, Perimeter, Major_Axis_Length, Minor_Axis_Length, Eccentricity, Convex_Area, and Extent, extracted from images. Our dataset comprises 75,000 images, with 15,000 images per rice variety. The image sizes are all 250x250 pixels on a dark background with exactly one rice in the middle of the image.
 ## Method
+### Model 1 - Logistic Regression
 ### Preprocess the data
 * Load the image from the dataset to check the quality of the images.
 * Check the size of the images and unify them to the same size.
@@ -24,10 +28,10 @@ In this project, we focus on classifying five types of rice: Arborio, Basmati, I
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, and duplicate records in the data to reduce redundancy.
 
 * **Choose Key Features**
-  * Due to the wide and disparate range across various features from the above pair plot, we normalized and standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
+  * Due to the wide and disparate range across various features from the above pair plot, we standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
 ![heatmap2](./data_picture/heatmap2.png)
 * **Label Encoding**
-  *  We also encoded the categorical rice types (`Basmati`, `Jasmine`, `Arborio`, `Ipsala`, and `Karacadag`) by mapping them to numerical values ranging from 0 to 4.
+  *  We also encoded the categorical rice types (`Arborio`: 0, `Jasmine`: 1, `Karacadag`: 2, `Basmati`: 3, `Ipsala`: 4) by mapping them to numerical values ranging from 0 to 4.
 * **Normalize and Standardize**
   * Minmax Normalization makes all eigenvalues ​​between [0, 1], eliminating the impact of different eigenvalue magnitudes. Standardization converts data into a standard normal distribution with a mean of 0 and a standard deviation of 1, which improves the efficiency of subsequent operations on the data.  
 ![df_pre](./data_picture/df_pre.png)
