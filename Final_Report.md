@@ -1,5 +1,12 @@
 # Rice Varieties Classification Report
 
+### Table of Contents
+* [Introduction](#introduction)
+* [Method](#method)
+* [Result](#result)
+* [Discussion](#discussion)
+* [Conclusion](#conclusion)
+* [Statement of Collaboration](#statement-of-collaboration)
 
 ## Introduction
 
