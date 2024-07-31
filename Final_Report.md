@@ -72,7 +72,8 @@ Each row is the prediction of each model for the test set, and each column is th
 ## Result
 In order to classify the class of rice, two algorithms are implemented. First one is a combination of 10 logistic regression, yielding a train accuracy of `0.9645` and test accuracy of `0.9660`. Second one is a neural network, yielding a train accuracy of `0.9620` and test accuracy of `0.9577 `. The best parameter for the neural network is 
 `{'num_layers': 8, 'units_layer_0': 86, 'activation_layer_0': 'softmax', 'units_layer_1': 127, 'activation_layer_1': 'relu', 'units_layer_2': 4, 'activation_layer_2': 'relu', 'units_layer_3': 4, 'activation_layer_3': 'softmax', 'dropout': True, 'output_activation': 'softmax', 'lr': 0.0004738715531002648, 'optimizer': 'Adam', 'units_layer_4': 45, 'activation_layer_4': 'sigmoid', 'units_layer_5': 86, 'activation_layer_5': 'relu', 'units_layer_6': 86, 'activation_layer_6': 'softmax', 'units_layer_7': 45, 'activation_layer_7': 'relu', 'units_layer_8': 86, 'activation_layer_8': 'relu', 'units_layer_9': 86, 'activation_layer_9': 'relu'}`.
-
+![neural_network_fit_accuracy](./data_picture/fit_accuracy.png)
+![neural_network_fit_loss](./data_picture/fit_loss.png)
 ## Discussion
 
 In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
