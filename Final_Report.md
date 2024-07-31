@@ -116,4 +116,10 @@ Overall, it has been a practical learning process in building a machine and deep
 
 ## Statement of Collaboration
 #### Jiawei Huang
+* **Title**: Team Leader / Project Manager / Programmer
+* **Contribution**: 
+  * Organize regular team meetings to discuss specific plans for weekly milestones. Also, Discuss and resolve potential problems in the project.
+  * Regularly check project progress and make adjustments based on team feedback and project requirements.
+  * Participated in and code the training and evaluation of two models in the project
+  * Participate in the preparation of weekly project reports and complete the requirements of Milestone tasks.
     
