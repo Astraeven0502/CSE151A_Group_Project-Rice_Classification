@@ -1,6 +1,5 @@
 # Rice Varieties Classification Report
 
-
 ## Introduction
 
 ## Method
@@ -63,3 +62,5 @@ Each row is the prediction of each model for the test set, and each column is th
 ## Conclusion
 
 ## Statement of Collaboration
+#### Jiawei Huang
+    

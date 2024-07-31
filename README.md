@@ -1,10 +1,10 @@
 # CSE151A_Group_Project-Rice_Classification
 
 #### Team member:
+* Jiawei Huang **(Team Leader)**
 * Po-Yu Lai
 * Chaowen cao
 * Xinheng Wang
-* Jiawei Huang
 * Zhenhan Hu
 * Shiwei Yang
 
