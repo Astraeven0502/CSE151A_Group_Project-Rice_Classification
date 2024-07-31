@@ -8,9 +8,12 @@
 * [Conclusion](#conclusion)
 * [Statement of Collaboration](#statement-of-collaboration)
 
-## Introduction
+# Introduction
 
-## Method
+# Method
+
+## Data Preprocessing
+
 ### Preprocess the data
 * Load the image from the dataset to check the quality of the images.
 * Check the size of the images and unify them to the same size.
@@ -30,9 +33,9 @@
   * Minmax Normalization makes all eigenvalues ​​between [0, 1], eliminating the impact of different eigenvalue magnitudes. Standardization converts data into a standard normal distribution with a mean of 0 and a standard deviation of 1, which improves the efficiency of subsequent operations on the data.  
 ![df_pre](./data_picture/df_pre.png)
 
-#### First Training Model
+## Our First Model:
 * **Logistic Regression model**
-    We used logistic regression models to classify the types of rice.
+  *  We used logistic regression models to classify the types of rice.
 * **Feature Pairing and Model Training**
   * We paired different types of rice to train different models. For example, Type 1 vs. Type 2, Type 1 vs. Type 3, and so on.
   * Each pair was used to train a separate instance of the logistic regression model. In the end, we have a total of 10 models, each trained on two of the types of rices. The following are 10 Logistic Regression models and their corresponding **log losses**:  
@@ -42,7 +45,7 @@
 ![output_matrix](./data_picture/out_matrix.png)  
 Each row is the prediction of each model for the test set, and each column is the prediction result of different models for the same sample.
   * The final classification was based on a scoring mechanism. For each test sample, the most frequent prediction, that is **mode**, obtained from all these models was the final output in this scoring approach. Thus, the final classification takes much from multiple models applied to further enable the overall accuracy to increase significantly.
-* **Evaluate**
+### Evaluate
 * Train_Accuracy:  
 ![train_accuracy](./data_picture/train_accuracy.png)
 * Test_Accuracy:  
@@ -63,9 +66,111 @@ Each row is the prediction of each model for the test set, and each column is th
 * **What can be done to possibly improve it?**
    * First of all, in terms of the use of the model, it seems to be a better decision to use a neural network rather than a logistic regression model, because this is a multi-classification problem, and neural networks have better performance for predicting tasks belonging to multiple categories. Then, for the final statistical method of the test results using the logistic regression model, we adopted the mode method, which may produce multiple different modes and lead to confusion in the test results. Perhaps it would be a better idea to use the sum or maximum probability of each model's probability for the test result.
 
-## Result
+## Our Second Model:
+* **Artificial Neural Network model**
+  * In this project, we utilized artificial neural networks to classify the types of rice based on given input features. 
+* **Tuning and Model re-Training**
+  * The following sections detail how the model was built, tuned, and trained using Keras Tuner for hyperparameter optimization.
+    * Step 1: Building the Model
+      * The function ```buildHPmodel(hp)``` is designed to construct a neural network model with tunable hyperparameters. The model begins with a Flatten layer, which is the input layer for model. Follow by some hidden layers, the loop is used to a some number of dense layers, which ranges from 4 to 10, and the activation function for each layer is selected from softmax, sigmoid or relu. To prevent overfitting, we introduce a dropout layer, which randomly setting a fraction of input units to zero during training. And a output layer with five nodes with activation function options: softmax, sigmoid or relu.
+    * Step 2: Hyperparameter Tuning with Keras Tuner
+      * We used Keras Tuner(RandomSearch) to improve the model's performance by finding the best set of hyperparameters. Here is our setup for tuner:
+      ```python
+      tuner = RandomSearch(
+          buildHPmodel,
+          objective="val_accuracy",
+          max_trials=5,
+          executions_per_trial=1,
+          project_name="dry_beans_dataset"
+      )
+      ```
+    * Step 3: Training the Model with Optimal Hyperparameters
+      We proceed to train the model using the optimal hyperparameters. The best hyperparameters are used to build a new model instance via ```tuner.hypermodel.build(best_hps)```. Next, we want to train the model using train data set ```(X_train, y_train)```. Then we evaluate our model using ```(X_test, y_test)```.
+### Evaluate
+* **Test Accuracy:**  
+![test_accuracy_ANN](./data_picture/test_accuracy_ANN.png)
+```
+Test Accuracy: 0.9577
+```
+* **Loss:** 
+![loss_ANN](./data_picture/loss_ANN.png)
+```
+Test Loss: 0.1651
+```
+* **Accuracy for each rice variety:**
+```python
+for i, class_name in enumerate(ohe.get_feature_names_out()):
+    precision = TP[i] / (TP[i] + FP[i])
+    recall = TP[i] / (TP[i] + FN[i])
+    f1_score = 2 * (precision * recall) / (precision + recall)
+    print(f"{class_name}:")
+    print(f"  Precision: {precision:.4f}")
+    print(f"  Recall: {recall:.4f}")
+    print(f"  F1-score: {f1_score:.4f}")
+```
 
-## Discussion
+Output:
+```
+Class_0:
+  Precision: 0.9194
+  Recall: 0.9478
+  F1-score: 0.9334
+
+Class_1:
+  Precision: 0.9404
+  Recall: 0.9626
+  F1-score: 0.9514
+
+Class_2:
+  Precision: 0.9596
+  Recall: 0.9349
+  F1-score: 0.9471
+
+Class_3:
+  Precision: 0.9747
+  Recall: 0.9663
+  F1-score: 0.9705
+
+Class_4:
+  Precision: 0.9993
+  Recall: 0.9778
+  F1-score: 0.9884
+```
+* **Confusion Matrix:**
+
+Code:
+```python
+cm = confusion_matrix(np.argmax(y_test,axis=1), np.argmax(predictions,axis=1))
+
+TP = np.diagonal(cm)
+FP = cm.sum(axis=0) - TP
+FN = cm.sum(axis=1) - TP
+TN = cm.sum() - FP - FN - TP
+
+print("TP: ", TP)
+print("FP: ", FP)
+print("FN: ", FN)
+print("TN: ", TN)
+```
+
+Output:
+```
+TP:  [2922 2885 2801 2894 2864]
+FP:  [256 183 118  75   2]
+FN:  [161 112 195 101  65]
+TN:  [11661 11820 11886 11930 12069]
+```
+
+The index correspond to certain rice variety where we encoded in preprocessing part: 
+```
+{'Arborio': 0, 'Jasmine': 1, 'Karacadag': 2, 'Basmati': 3, 'Ipsala': 4}
+```
+* **Confusion Matrix Visualization:**
+![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)
+
+# Result
+
+# Discussion
 
 In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
 
@@ -112,9 +217,9 @@ In the future, transfer learning can be tried using pre-trained convolutional ne
 Overall, it has been a practical learning process in building a machine and deep learning project from scratch: data preprocessing, feature extraction, model selection and training, and hyperparameter tuning. The results are not perfect; however, this process gave us insight into machine learning and deep learning, enabling us to identify problems and solve them within a project.
 
 
-## Conclusion
+# Conclusion
 
-## Statement of Collaboration
+# Statement of Collaboration
 #### Jiawei Huang
 * **Title**: Team Leader / Project Manager / Programmer
 * **Contribution**: 
