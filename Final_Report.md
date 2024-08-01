@@ -265,3 +265,12 @@ Overall, it has been a practical learning process in building a machine and deep
   * Worked on coding, training, and evaluating the second model for the project.
   * Contributed to weekly project coding and helped debug the code.
   * Write the discussion section and identify the best model for the written report.
+
+ 
+#### Chaowen Cao 
+* **Title**: Team menber / Programmer
+* **Contribution**:
+  * Systematically upload and structure the datasets in the model for accuracy, consistency, and proper documentation for efficient analysis
+  * Develop a detailed report documenting methodologies, model evaluations, and rationale leading to a well-supported recommendation for the best-performing model.
+  * participated in the training and evaluation of two models for the project and contributed significantly to the coding process
+  * Participated in the preparation of weekly project reports and successfully completed the requirements of milestone tasks.
