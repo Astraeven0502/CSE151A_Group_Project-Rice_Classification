@@ -16,7 +16,7 @@ In this project, we focus on classifying five types of rice: Arborio, Basmati, I
 ![rice_introduction](./data_picture/rice_introduction.png)
 We analyze some of their key features, including Area, Perimeter, Major_Axis_Length, Minor_Axis_Length, Eccentricity, Convex_Area, and Extent, extracted from images. Our dataset comprises 75,000 images, with 15,000 images per rice variety. The image sizes are all 250x250 pixels on a dark background with exactly one rice in the middle of the image.
 # Method
-### Model 1 - Logistic Regression
+
 ### Preprocess the data
 * Load the image from the dataset to check the quality of the images.
 * Check the size of the images and unify them to the same size.
