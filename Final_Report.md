@@ -283,3 +283,11 @@ Overall, it has been a practical learning process in building a machine and deep
   * Researched on the rice classification looking for relative articles
   * Participated on the model building, mainly on the first model, combination of 10 logistic regressions
   * Being responsible for Result session and Conclusion session in the final report
+
+#### Zhenhan Hu
+* **Title**: Team Member / Programmer
+* **Contribution**:
+  * Completed the Abstract for Milestone 1
+  * Completed the Feature Scalarization for Data Preprocessing
+  * Participated in weekly project discussions regarding model construction and code implementation
+  * Finalized Introduction session in the final report
