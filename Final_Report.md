@@ -274,3 +274,11 @@ Overall, it has been a practical learning process in building a machine and deep
   * Develop a detailed report documenting methodologies, model evaluations, and rationale leading to a well-supported recommendation for the best-performing model.
   * participated in the training and evaluation of two models for the project and contributed significantly to the coding process
   * Participated in the preparation of weekly project reports and successfully completed the requirements of milestone tasks.
+
+#### Shiwei Yang
+* **Title**: Team Member / Programmer / Writer
+* **Contribution**: 
+  * Brainstormed and decided the topic of the project
+  * Researched on the rice classification looking for relative articles
+  * Participated on the model building, mainly on the first model, combination of 10 logistic regressions
+  * Being responsible for Result session and Conclusion session in the final report
