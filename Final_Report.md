@@ -277,7 +277,7 @@ Overall, it has been a practical learning process in building a machine and deep
   * Participated in the preparation of weekly project reports and successfully completed the requirements of milestone tasks.
 
 #### Shiwei Yang
-* **Title**: Team Member / Programmer / Writer
+* **Title**: Team Member / Programmer
 * **Contribution**: 
   * Brainstormed and decided the topic of the project
   * Researched on the rice classification looking for relative articles
