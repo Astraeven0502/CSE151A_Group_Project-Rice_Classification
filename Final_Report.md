@@ -264,7 +264,7 @@ Overall, it has been a practical learning process in building a machine and deep
   * Participated in and code the training and evaluation of two models in the project
   * Participate in the preparation of weekly project reports and complete the requirements of Milestone tasks.
   * Manage notebook and merge everyone's work in Google collab.
-  * Organize Github.
+  * Organize Github repository.
     
 #### Xinheng Wang
 * **Title**: Programmer/Team member
