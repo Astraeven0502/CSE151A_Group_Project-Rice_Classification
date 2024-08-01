@@ -28,7 +28,7 @@ We analyze some of their key features, including Area, Perimeter, Major_Axis_Len
 * Analyze feature data and remove data that affects model accuracy. Remove missing values, redundant features, unnecessary samples, outliers, and duplicate records in the data to reduce redundancy.
 
 * **Choose Key Features**
-  * Due to the wide and disparate range across various features from the above pair plot, we standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.
+  * Due to the wide and disparate range across various features from the above pair plot, we standardized three key features (`Perimeter`(0.71), `Area`(0.65), and `Convex_Area`(0.65)) within the `preprocess_rice_data()` function, as they show a higher correlation with `class`.  
 ![heatmap2](./data_picture/heatmap2.png)
 * **Label Encoding**
   *  We also encoded the categorical rice types (`Arborio`: 0, `Jasmine`: 1, `Karacadag`: 2, `Basmati`: 3, `Ipsala`: 4) by mapping them to numerical values ranging from 0 to 4.
@@ -164,8 +164,9 @@ The index correspond to certain rice variety where we encoded in preprocessing p
 ```
 {'Arborio': 0, 'Jasmine': 1, 'Karacadag': 2, 'Basmati': 3, 'Ipsala': 4}
 ```
-* **Confusion Matrix Visualization:**
-![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)
+* **Confusion Matrix Visualization:**  
+
+![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)  
 
 # Result
 In order to classify the class of rice, two algorithms are implemented. First one is a combination of 10 logistic regression, yielding a train accuracy of `0.9645` and test accuracy of `0.9660`. Second one is a neural network, yielding a train accuracy of `0.9620` and test accuracy of `0.9577 `. The best parameter for the neural network is 
@@ -208,7 +209,7 @@ Standardization ensures all features have the same scale, which helps the model 
 
 Initially, we selected logistic regression models and trained binary classifiers for pairs of the selected classes, calculating the corresponding log loss values for each. Finally, by using these log loss values, a voting classifier was built. This served as our baseline before moving to more complex models. We were pleasantly surprised by how well logistic regression performed on our dataset. It might indicate strong discriminativity among features but also raises concerns about high complexity in the dataset. Typically, if a logistic regression model works well for a task, it suggests that the differences are more subtle and non-linear.
 
-![report_1](./data_picture/report_1.png)
+<img src="./data_picture/report_1.png" alt="report_1" width="500">
 
 ### Deep Learning Model and Hyperparameter Tuning
 
@@ -216,7 +217,7 @@ Given the promising results from logistic regression, we moved on to explore dee
 
 To further improve performance, we used Keras Tuner for hyperparameter search. We hypothesized the presence of complex nonlinear relationships in our data, beyond what simpler models could capture. Indeed, in support of this hypothesis, the deep learning model showed improved performance at the expense of a decrease in interpretability.
 
-![report_2](./data_picture/report_2.png)
+<img src="./data_picture/report_2.png" alt="report_2" width="500">
 
 
 ### Results and Discussion
@@ -259,7 +260,7 @@ Overall, it has been a practical learning process in building a machine and deep
   * Organize Github repository.
     
 #### Xinheng Wang
-* **Title**: Programmer/Team member
+* **Title**: Programmer / Team member
 * **Countribution**:
   * Finished the exploration step for Milestone 1.
   * Worked on coding, training, and evaluating the second model for the project.
