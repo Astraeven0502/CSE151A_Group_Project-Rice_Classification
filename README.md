@@ -204,7 +204,10 @@ Each row is the prediction of each model for the test set, and each column is th
 
 # Milestone 4: Final Submission
 
-### Newly train model (Final model)
+## Final_Report
+[Rice_Classification_Final_Report](./Final_Report.md)
+
+## Newly train model (Final model)
 * **Artificial Neural Network model**
   * In this project, we utilized artificial neural networks to classify the types of rice based on given input features. 
 * **Tuning and Model re-Training**
@@ -302,7 +305,3 @@ The index correspond to certain rice variety where we encoded in preprocessing p
 * **Confusion Matrix Visualization:**  
 
 ![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)
-
-## Final_Report
-
-[Rice_Classification_Final_Report](./Final_Report.md)
