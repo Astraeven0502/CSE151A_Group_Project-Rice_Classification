@@ -173,7 +173,26 @@ The index correspond to certain rice variety where we encoded in preprocessing p
 
 # Result
 In order to classify the class of rice, two algorithms are implemented. First one is a combination of 10 logistic regression, yielding a train accuracy of `0.9645` and test accuracy of `0.9660`. Second one is a neural network, yielding a train accuracy of `0.9620` and test accuracy of `0.9577 `. The best parameter for the neural network is 
-`{'num_layers': 8, 'units_layer_0': 86, 'activation_layer_0': 'softmax', 'units_layer_1': 127, 'activation_layer_1': 'relu', 'units_layer_2': 4, 'activation_layer_2': 'relu', 'units_layer_3': 4, 'activation_layer_3': 'softmax', 'dropout': True, 'output_activation': 'softmax', 'lr': 0.0004738715531002648, 'optimizer': 'Adam', 'units_layer_4': 45, 'activation_layer_4': 'sigmoid', 'units_layer_5': 86, 'activation_layer_5': 'relu', 'units_layer_6': 86, 'activation_layer_6': 'softmax', 'units_layer_7': 45, 'activation_layer_7': 'relu', 'units_layer_8': 86, 'activation_layer_8': 'relu', 'units_layer_9': 86, 'activation_layer_9': 'relu'}`.
+<center>
+
+ Type             |  Value | Activation_Function
+ :---------------:|:-------------:|:------------------:|
+ number of layer | 10 | N/A
+ layer 1 | 86 units | softmax 
+ layer 2 | 127 units | relu 
+ layer 3 | 4 units | relu 
+ layer 4 | 4 units | softmax 
+ layer 5 | 45 units | sigmoid 
+ layer 6 | 86 units | relu 
+ layer 7 | 86 units | softmax 
+ layer 8 | 45 units | relu
+ layer 9 | 86 units | relu
+ layer 10 | 86 units | relu
+ learning rate units | 0.0009075662940740351 | N/A
+ optimizer | Adagrad | N/A
+ 
+</center>
+
 fit_accuracy             |  fit_loss
 :-------------------------:|:-------------------------:
 ![neural_network_fit_accuracy](./data_picture/fit_accuracy.png) | ![neural_network_fit_loss](./data_picture/fit_loss.png)
@@ -247,3 +266,10 @@ Overall, it has been a practical learning process in building a machine and deep
   * Manage notebook and merge everyone's work in Google collab.
   * Organize Github.
     
+#### Xinheng Wang
+* **Title**: Programmer/Team member
+* **Countribution**:
+  * Finished the exploration step for Milestone 1.
+  * Worked on coding, training, and evaluating the second model for the project.
+  * Contributed to weekly project coding and helped debug the code.
+  * Write the discussion section and identify the best model for the written report.
