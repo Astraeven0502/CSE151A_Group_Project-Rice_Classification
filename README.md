@@ -203,4 +203,106 @@ Each row is the prediction of each model for the test set, and each column is th
    * First of all, in terms of the use of the model, it seems to be a better decision to use a neural network rather than a logistic regression model, because this is a multi-classification problem, and neural networks have better performance for predicting tasks belonging to multiple categories. Then, for the final statistical method of the test results using the logistic regression model, we adopted the mode method, which may produce multiple different modes and lead to confusion in the test results. Perhaps it would be a better idea to use the sum or maximum probability of each model's probability for the test result.
 
 # Milestone 4: Final Submission
-[Final_Report](./Final_Report.md)
+
+### Newly train model (Final model)
+* **Artificial Neural Network model**
+  * In this project, we utilized artificial neural networks to classify the types of rice based on given input features. 
+* **Tuning and Model re-Training**
+  * The following sections detail how the model was built, tuned, and trained using Keras Tuner for hyperparameter optimization.
+    * Step 1: Building the Model
+      * The function ```buildHPmodel(hp)``` is designed to construct a neural network model with tunable hyperparameters. The model begins with a Flatten layer, which is the input layer for model. Follow by some hidden layers, the loop is used to a some number of dense layers, which ranges from 4 to 10, and the activation function for each layer is selected from softmax, sigmoid or relu. To prevent overfitting, we introduce a dropout layer, which randomly setting a fraction of input units to zero during training. And a output layer with five nodes with activation function options: softmax, sigmoid or relu.
+    * Step 2: Hyperparameter Tuning with Keras Tuner
+      * We used Keras Tuner(RandomSearch) to improve the model's performance by finding the best set of hyperparameters. Here is our setup for tuner:
+      ```python
+      tuner = RandomSearch(
+          buildHPmodel,
+          objective="val_accuracy",
+          max_trials=5,
+          executions_per_trial=1,
+          project_name="dry_beans_dataset"
+      )
+      ```
+    * Step 3: Training the Model with Optimal Hyperparameters
+      We proceed to train the model using the optimal hyperparameters. The best hyperparameters are used to build a new model instance via ```tuner.hypermodel.build(best_hps)```. Next, we want to train the model using train data set ```(X_train, y_train)```. Then we evaluate our model using ```(X_test, y_test)```.
+### Evaluate
+* **Test Accuracy:**  
+
+| Fit Accuracy | Fit Loss |
+:-------------------------:|:-------------------------:
+| <img src="./data_picture/fit_accuracy.png" alt="neural_network_fit_accuracy" width="600px"> | <img src="./data_picture/fit_loss.png" alt="neural_network_fit_loss" width="600px">  |
+
+* **Accuracy for each rice variety:**
+```python
+for i, class_name in enumerate(ohe.get_feature_names_out()):
+    precision = TP[i] / (TP[i] + FP[i])
+    recall = TP[i] / (TP[i] + FN[i])
+    f1_score = 2 * (precision * recall) / (precision + recall)
+    print(f"{class_name}:")
+    print(f"  Precision: {precision:.4f}")
+    print(f"  Recall: {recall:.4f}")
+    print(f"  F1-score: {f1_score:.4f}")
+```
+
+Output:
+```
+Class_0:
+  Precision: 0.9194
+  Recall: 0.9478
+  F1-score: 0.9334
+
+Class_1:
+  Precision: 0.9404
+  Recall: 0.9626
+  F1-score: 0.9514
+
+Class_2:
+  Precision: 0.9596
+  Recall: 0.9349
+  F1-score: 0.9471
+
+Class_3:
+  Precision: 0.9747
+  Recall: 0.9663
+  F1-score: 0.9705
+
+Class_4:
+  Precision: 0.9993
+  Recall: 0.9778
+  F1-score: 0.9884
+```
+* **Confusion Matrix:**
+
+Code:
+```python
+cm = confusion_matrix(np.argmax(y_test,axis=1), np.argmax(predictions,axis=1))
+
+TP = np.diagonal(cm)
+FP = cm.sum(axis=0) - TP
+FN = cm.sum(axis=1) - TP
+TN = cm.sum() - FP - FN - TP
+
+print("TP: ", TP)
+print("FP: ", FP)
+print("FN: ", FN)
+print("TN: ", TN)
+```
+
+Output:
+```
+TP:  [2922 2885 2801 2894 2864]
+FP:  [256 183 118  75   2]
+FN:  [161 112 195 101  65]
+TN:  [11661 11820 11886 11930 12069]
+```
+
+The index correspond to certain rice variety where we encoded in preprocessing part: 
+```
+{'Arborio': 0, 'Jasmine': 1, 'Karacadag': 2, 'Basmati': 3, 'Ipsala': 4}
+```
+* **Confusion Matrix Visualization:**  
+
+![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)
+
+## Final_Report
+
+[Rice_Classification_Final_Report](./Final_Report.md)
