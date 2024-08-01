@@ -263,4 +263,4 @@ Overall, it has been a practical learning process in building a machine and deep
   * Finished the exploration step for Milestone 1.
   * Worked on coding, training, and evaluating the second model for the project.
   * Contributed to weekly project coding and helped debug the code.
-  * Write the discussion section for the written report.
+  * Write the discussion section and identify the best model for the written report.
