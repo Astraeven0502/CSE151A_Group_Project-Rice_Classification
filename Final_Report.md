@@ -91,15 +91,11 @@ Each row is the prediction of each model for the test set, and each column is th
       We proceed to train the model using the optimal hyperparameters. The best hyperparameters are used to build a new model instance via ```tuner.hypermodel.build(best_hps)```. Next, we want to train the model using train data set ```(X_train, y_train)```. Then we evaluate our model using ```(X_test, y_test)```.
 ### Evaluate
 * **Test Accuracy:**  
-![test_accuracy_ANN](./data_picture/test_accuracy_ANN.png)
-```
-Test Accuracy: 0.9577
-```
-* **Loss:** 
-![loss_ANN](./data_picture/loss_ANN.png)
-```
-Test Loss: 0.1651
-```
+
+| Fit Accuracy | Fit Loss |
+:-------------------------:|:-------------------------:
+| <img src="./data_picture/fit_accuracy.png" alt="neural_network_fit_accuracy" width="600px"> | <img src="./data_picture/fit_loss.png" alt="neural_network_fit_loss" width="600px">  |
+
 * **Accuracy for each rice variety:**
 ```python
 for i, class_name in enumerate(ohe.get_feature_names_out()):
@@ -192,10 +188,6 @@ In order to classify the class of rice, two algorithms are implemented. First on
  optimizer | Adagrad | N/A
  
 </center>
-
-fit_accuracy             |  fit_loss
-:-------------------------:|:-------------------------:
-![neural_network_fit_accuracy](./data_picture/fit_accuracy.png) | ![neural_network_fit_loss](./data_picture/fit_loss.png)
 # Discussion
 
 In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
