@@ -237,4 +237,13 @@ Overall, it has been a practical learning process in building a machine and deep
   * Regularly check project progress and make adjustments based on team feedback and project requirements.
   * Participated in and code the training and evaluation of two models in the project
   * Participate in the preparation of weekly project reports and complete the requirements of Milestone tasks.
+#### Po-Yu Lai
+* **Title**: Team member / Project Manager / Programmer
+* **Contribution**: 
+  * Evaluate and build the model and choose the best model.
+  * Finalize the project and each milestones and make adjustments based on team feedback and project requirements.
+  * Participated in and code the training and evaluation of two models in the project
+  * Participate in the preparation of weekly project reports and complete the requirements of Milestone tasks.
+  * Manage notebook and merge everyone's work in Google collab.
+  * Organize Github.
     
