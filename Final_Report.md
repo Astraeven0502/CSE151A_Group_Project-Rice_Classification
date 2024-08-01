@@ -8,14 +8,14 @@
 * [Conclusion](#conclusion)
 * [Statement of Collaboration](#statement-of-collaboration)
 
-## Introduction  
+# Introduction  
 ![rice_type](./data_picture/rice_type.png)
 Rice, an agriculturally important food for many countries and regions, has a history of cultivation for thousands of years. Over time, new rice varieties have been introduced to enhance its traits such as disease resistance and nutritional content. However, traditional classification among different types of rice is done by manual visual inspection which is often challenging, slow, and results in higher error due to their similarity in size, shape, and color. Thus, developing efficient and accurate classification methods is crucial for helping farmers and producers ensure consistent quality control and segregating different rice varieties for specialized markets.
 
 In this project, we focus on classifying five types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag.  
 ![rice_introduction](./data_picture/rice_introduction.png)
 We analyze some of their key features, including Area, Perimeter, Major_Axis_Length, Minor_Axis_Length, Eccentricity, Convex_Area, and Extent, extracted from images. Our dataset comprises 75,000 images, with 15,000 images per rice variety. The image sizes are all 250x250 pixels on a dark background with exactly one rice in the middle of the image.
-## Method
+# Method
 ### Model 1 - Logistic Regression
 ### Preprocess the data
 * Load the image from the dataset to check the quality of the images.
@@ -69,13 +69,115 @@ Each row is the prediction of each model for the test set, and each column is th
 * **What can be done to possibly improve it?**
    * First of all, in terms of the use of the model, it seems to be a better decision to use a neural network rather than a logistic regression model, because this is a multi-classification problem, and neural networks have better performance for predicting tasks belonging to multiple categories. Then, for the final statistical method of the test results using the logistic regression model, we adopted the mode method, which may produce multiple different modes and lead to confusion in the test results. Perhaps it would be a better idea to use the sum or maximum probability of each model's probability for the test result.
 
-## Result
+## Our Second Model:
+* **Artificial Neural Network model**
+  * In this project, we utilized artificial neural networks to classify the types of rice based on given input features. 
+* **Tuning and Model re-Training**
+  * The following sections detail how the model was built, tuned, and trained using Keras Tuner for hyperparameter optimization.
+    * Step 1: Building the Model
+      * The function ```buildHPmodel(hp)``` is designed to construct a neural network model with tunable hyperparameters. The model begins with a Flatten layer, which is the input layer for model. Follow by some hidden layers, the loop is used to a some number of dense layers, which ranges from 4 to 10, and the activation function for each layer is selected from softmax, sigmoid or relu. To prevent overfitting, we introduce a dropout layer, which randomly setting a fraction of input units to zero during training. And a output layer with five nodes with activation function options: softmax, sigmoid or relu.
+    * Step 2: Hyperparameter Tuning with Keras Tuner
+      * We used Keras Tuner(RandomSearch) to improve the model's performance by finding the best set of hyperparameters. Here is our setup for tuner:
+      ```python
+      tuner = RandomSearch(
+          buildHPmodel,
+          objective="val_accuracy",
+          max_trials=5,
+          executions_per_trial=1,
+          project_name="dry_beans_dataset"
+      )
+      ```
+    * Step 3: Training the Model with Optimal Hyperparameters
+      We proceed to train the model using the optimal hyperparameters. The best hyperparameters are used to build a new model instance via ```tuner.hypermodel.build(best_hps)```. Next, we want to train the model using train data set ```(X_train, y_train)```. Then we evaluate our model using ```(X_test, y_test)```.
+### Evaluate
+* **Test Accuracy:**  
+![test_accuracy_ANN](./data_picture/test_accuracy_ANN.png)
+```
+Test Accuracy: 0.9577
+```
+* **Loss:** 
+![loss_ANN](./data_picture/loss_ANN.png)
+```
+Test Loss: 0.1651
+```
+* **Accuracy for each rice variety:**
+```python
+for i, class_name in enumerate(ohe.get_feature_names_out()):
+    precision = TP[i] / (TP[i] + FP[i])
+    recall = TP[i] / (TP[i] + FN[i])
+    f1_score = 2 * (precision * recall) / (precision + recall)
+    print(f"{class_name}:")
+    print(f"  Precision: {precision:.4f}")
+    print(f"  Recall: {recall:.4f}")
+    print(f"  F1-score: {f1_score:.4f}")
+```
+
+Output:
+```
+Class_0:
+  Precision: 0.9194
+  Recall: 0.9478
+  F1-score: 0.9334
+
+Class_1:
+  Precision: 0.9404
+  Recall: 0.9626
+  F1-score: 0.9514
+
+Class_2:
+  Precision: 0.9596
+  Recall: 0.9349
+  F1-score: 0.9471
+
+Class_3:
+  Precision: 0.9747
+  Recall: 0.9663
+  F1-score: 0.9705
+
+Class_4:
+  Precision: 0.9993
+  Recall: 0.9778
+  F1-score: 0.9884
+```
+* **Confusion Matrix:**
+
+Code:
+```python
+cm = confusion_matrix(np.argmax(y_test,axis=1), np.argmax(predictions,axis=1))
+
+TP = np.diagonal(cm)
+FP = cm.sum(axis=0) - TP
+FN = cm.sum(axis=1) - TP
+TN = cm.sum() - FP - FN - TP
+
+print("TP: ", TP)
+print("FP: ", FP)
+print("FN: ", FN)
+print("TN: ", TN)
+```
+
+Output:
+```
+TP:  [2922 2885 2801 2894 2864]
+FP:  [256 183 118  75   2]
+FN:  [161 112 195 101  65]
+TN:  [11661 11820 11886 11930 12069]
+```
+
+The index correspond to certain rice variety where we encoded in preprocessing part: 
+```
+{'Arborio': 0, 'Jasmine': 1, 'Karacadag': 2, 'Basmati': 3, 'Ipsala': 4}
+```
+* **Confusion Matrix Visualization:**
+![confusion_matrix_ANN](./data_picture/confusion_matrix_ANN.png)
+
+# Result
 In order to classify the class of rice, two algorithms are implemented. First one is a combination of 10 logistic regression, yielding a train accuracy of `0.9645` and test accuracy of `0.9660`. Second one is a neural network, yielding a train accuracy of `0.9620` and test accuracy of `0.9577 `. The best parameter for the neural network is 
 `{'num_layers': 8, 'units_layer_0': 86, 'activation_layer_0': 'softmax', 'units_layer_1': 127, 'activation_layer_1': 'relu', 'units_layer_2': 4, 'activation_layer_2': 'relu', 'units_layer_3': 4, 'activation_layer_3': 'softmax', 'dropout': True, 'output_activation': 'softmax', 'lr': 0.0004738715531002648, 'optimizer': 'Adam', 'units_layer_4': 45, 'activation_layer_4': 'sigmoid', 'units_layer_5': 86, 'activation_layer_5': 'relu', 'units_layer_6': 86, 'activation_layer_6': 'softmax', 'units_layer_7': 45, 'activation_layer_7': 'relu', 'units_layer_8': 86, 'activation_layer_8': 'relu', 'units_layer_9': 86, 'activation_layer_9': 'relu'}`.
 fit_accuracy             |  fit_loss
 :-------------------------:|:-------------------------:
 ![neural_network_fit_accuracy](./data_picture/fit_accuracy.png) | ![neural_network_fit_loss](./data_picture/fit_loss.png)
-## Discussion
+# Discussion
 
 In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
 
