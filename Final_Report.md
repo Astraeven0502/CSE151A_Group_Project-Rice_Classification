@@ -294,9 +294,9 @@ Overall, it has been a practical learning process in building a machine and deep
   * Finalized Introduction session in the final report
 
 # Reference
-https://www.kaggle.com/datasets?search=rice
-https://huggingface.co/datasets/nateraw/rice-image-dataset
-https://ijisae.org/index.php/IJISAE/article/view/1068/599
+https://www.kaggle.com/datasets?search=rice \
+https://huggingface.co/datasets/nateraw/rice-image-dataset \
+https://ijisae.org/index.php/IJISAE/article/view/1068/599 \
 
 # Google Collab Notebook
 [Final Notebook](https://colab.research.google.com/drive/16LlucRwBKMRMJcb4NLPE5fthHxCNljGx?usp=sharing)
