@@ -185,7 +185,7 @@ In order to classify the class of rice, two algorithms are implemented. First on
  layer 8 | 45 units | relu
  layer 9 | 86 units | relu
  layer 10 | 86 units | relu
- learning rate units | 0.0009075662940740351 | N/A
+ learning rate | 0.0009075662940740351 | N/A
  optimizer | Adagrad | N/A
  
 </center>
