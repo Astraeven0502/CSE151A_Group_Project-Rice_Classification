@@ -189,6 +189,7 @@ In order to classify the class of rice, two algorithms are implemented. First on
  optimizer | Adagrad | N/A
  
 </center>
+
 # Discussion
 
 In this project, we aimed to classify five different types of rice: Arborio, Basmati, Ipsala, Jasmine, and Karacadag using a variety of machine learning and deep learning methods. The main parts of the project are divided into data preprocessing, feature extraction, model selection and training, hyperparameter tuning, and model evaluation.
