@@ -95,13 +95,16 @@ Standardization ensures all features have the same scale, which helps the model 
 
 Initially, we selected logistic regression models and trained binary classifiers for pairs of the selected classes, calculating the corresponding log loss values for each. Finally, by using these log loss values, a voting classifier was built. This served as our baseline before moving to more complex models. We were pleasantly surprised by how well logistic regression performed on our dataset. It might indicate strong discriminativity among features but also raises concerns about high complexity in the dataset. Typically, if a logistic regression model works well for a task, it suggests that the differences are more subtle and non-linear.
 
-
+![report_1](./data_picture/report_1.png)
 
 ### Deep Learning Model and Hyperparameter Tuning
 
 Given the promising results from logistic regression, we moved on to explore deep learning models. We used convolutional neural networks (CNNs) due to their effectiveness in image classification tasks. Our CNN architecture was designed to capture the intricate patterns and textures in rice grains that logistic regression might miss.
 
 To further improve performance, we used Keras Tuner for hyperparameter search. We hypothesized the presence of complex nonlinear relationships in our data, beyond what simpler models could capture. Indeed, in support of this hypothesis, the deep learning model showed improved performance at the expense of a decrease in interpretability.
+
+![report_2](./data_picture/report_2.png)
+
 
 ### Results and Discussion
 
