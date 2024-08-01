@@ -16,7 +16,7 @@ In this project, we focus on classifying five types of rice: Arborio, Basmati, I
 ![rice_introduction](./data_picture/rice_introduction.png)
 We analyze some of their key features, including Area, Perimeter, Major_Axis_Length, Minor_Axis_Length, Eccentricity, Convex_Area, and Extent, extracted from images. Our dataset comprises 75,000 images, with 15,000 images per rice variety. The image sizes are all 250x250 pixels on a dark background with exactly one rice in the middle of the image.
 # Method
-### Model 1 - Logistic Regression
+
 ### Preprocess the data
 * Load the image from the dataset to check the quality of the images.
 * Check the size of the images and unify them to the same size.
@@ -250,7 +250,7 @@ Overall, it has been a practical learning process in building a machine and deep
   * Participated in and code the training and evaluation of two models in the project
   * Participate in the preparation of weekly project reports and complete the requirements of Milestone tasks.
 #### Po-Yu Lai
-* **Title**: Team member / Project Manager / Programmer
+* **Title**: Team Member / Project Manager / Programmer
 * **Contribution**: 
   * Build and evaluate the model and choose the best model.
   * Finalize the project and each milestones and make adjustments based on team feedback and project requirements.
@@ -266,3 +266,20 @@ Overall, it has been a practical learning process in building a machine and deep
   * Worked on coding, training, and evaluating the second model for the project.
   * Contributed to weekly project coding and helped debug the code.
   * Write the discussion section and identify the best model for the written report.
+
+ 
+#### Chaowen Cao 
+* **Title**: Team menber / Programmer
+* **Contribution**:
+  * Systematically upload and structure the datasets in the model for accuracy, consistency, and proper documentation for efficient analysis
+  * Develop a detailed report documenting methodologies, model evaluations, and rationale leading to a well-supported recommendation for the best-performing model.
+  * participated in the training and evaluation of two models for the project and contributed significantly to the coding process
+  * Participated in the preparation of weekly project reports and successfully completed the requirements of milestone tasks.
+
+#### Shiwei Yang
+* **Title**: Team Member / Programmer / Writer
+* **Contribution**: 
+  * Brainstormed and decided the topic of the project
+  * Researched on the rice classification looking for relative articles
+  * Participated on the model building, mainly on the first model, combination of 10 logistic regressions
+  * Being responsible for Result session and Conclusion session in the final report
