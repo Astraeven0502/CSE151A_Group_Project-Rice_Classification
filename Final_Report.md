@@ -229,18 +229,9 @@ Both logistic regression and deep learning models were trained, and both showed 
 
 We achieved about 97% accuracy on the test set; therefore, it remains highly predictive. However, the dataset is generated artificially, and images are on black backgrounds, which may not be the case in reality. So, the model's performance might degrade while working in real applications.
 
-### Limitations and Improvements
-
-The primary limitation of our model is overfitting. We can improve this by increasing the size of the data, as well as using data augmentation techniques and regularization methods. Other approaches to try for further performance improvement may include trying out additional models and complex network architectures.
-
-### Future Work
-
-In the future, transfer learning can be tried using pre-trained convolutional neural networks (CNNs), such as ResNet and VGG, for feature extraction and classification. Further methods of hyperparameter tuning—such as Bayesian optimization—might be considered in an attempt to find better hyperparameter configurations.
-
-Overall, it has been a practical learning process in building a machine and deep learning project from scratch: data preprocessing, feature extraction, model selection and training, and hyperparameter tuning. The results are not perfect; however, this process gave us insight into machine learning and deep learning, enabling us to identify problems and solve them within a project.
-
-
 # Conclusion
+This project originally aimed to classify rice in a given rice image. So far, this project has tried two different models to classify five classes of rice. Both models yield pretty good accuracy, where the neural network performs a little bit better. To generalize this project, we hope to not only use a perfectly formed image, but also can also handle the image taken in daily life. Furthermore, since this project used features that were extracted directly by cv2 to build the model, this might cause unexpected errors.  Resolving this, convolutional neural networks (CNNs), such as ResNet and VGG, can be tried for feature extraction and classification. For further methods of hyperparameter tuning, Beyesian optimization can be another option.  
+Overall, it has been a practical learning process in building a machine and deep learning project from scratch: data preprocessing, feature extraction, model selection and training, and hyperparameter tuning. The results are not perfect. However, this process gives us insight into machine learning and deep learning, enabling us to identify problems and solve them within a project.
 
 # Statement of Collaboration
 #### Jiawei Huang
